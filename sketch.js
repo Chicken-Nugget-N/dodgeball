@@ -5,7 +5,7 @@
 let health;
 
 function preload() {
-  health = loadImage("images/health.jpg");
+  health = loadImage("./images/health.jpg");
 }
 
 // =====================================
