@@ -104,6 +104,8 @@ let ballSlider;
 let speedSlider;
 let startButton;
 
+let enemySpeed;
+
 let state = 'start screen';
 
 // =====================================
@@ -121,17 +123,17 @@ function setup() {
 }
 
 function startScreen() {
-  ballSlider = createSlider(5, 15, 5, 1);
+  ballSlider = createSlider(1, 6, 2, 1);
   ballSlider.parent('canvas-holder');
   ballSlider.position(150, 220);
   ballSlider.size(200);
 
-  speedSlider = createSlider(0.1, 5.0, 1.5, 0.1);
+  speedSlider = createSlider(0.1, 5.0, 2.5, 0.1);
   speedSlider.parent('canvas-holder');
   speedSlider.position(150, 310);
   speedSlider.size(200);
 
-  startButton = createButton('go shoot stuf');
+  startButton = createButton('go dodge stuf');
   startButton.parent('canvas-holder');
   startButton.position(175, 380);
   startButton.size(150, 40);
@@ -140,7 +142,7 @@ function startScreen() {
 }
 
 function startGame() {
-  startingBallCount = ballSlider.value();
+  amountOfBalls = ballSlider.value();
   enemySpeed = speedSlider.value();
 
   ballSlider.hide();
@@ -155,8 +157,8 @@ function startGame() {
       new Ball(
         random(150, 475),
         random(150, 475),
-        random(3, 5),
-        random(3, 5),
+        random(enemySpeed, enemySpeed+2),
+        random(enemySpeed, enemySpeed+2),
         random([-1, 1]),
         random([-1, 1])
       )
@@ -171,6 +173,22 @@ function startGame() {
 function draw() {
   if (state === 'start screen') {
     background(20, 20, 35);
+    fill(255);
+    textAlign(CENTER);
+    textSize(36);
+    text("Ball dodgey Thingy", 250, 100);
+    textSize(14);
+    fill(180);
+    text("u gotta dodge the red balls and collect the yellow squares. \nu can move with arrow keys\nand u use p to pause.", 250, 140);
+
+   
+    fill(255);
+    textSize(18);
+    textAlign(LEFT);
+    text("ball amount: " + ballSlider.value(), 150, 210);
+
+    text("ball fastness: " + speedSlider.value().toFixed(1) + "x", 150, 300);
+
   } else if (state === "game") {
     background(0, 0, 0, 75);
 
@@ -377,6 +395,12 @@ function keyPressed() {
 
     // Resume the game
     paused = false;
+    loop();
+  }
+
+  if (key === "R") {
+    state = "start screen"
+    startScreen();
     loop();
   }
 }

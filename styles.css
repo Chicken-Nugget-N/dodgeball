@@ -1,20 +1,23 @@
-.page-layout {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 30px;              
-  padding: 30px;
-}
-
-
 #canvas-holder {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column-reverse; /* Keeps canvas perfectly locked at 400x400 */
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
 }
 
+#canvas-holder canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
-.text-holder {
-  flex-grow: 1;
-  font-family: sans-serif;
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
