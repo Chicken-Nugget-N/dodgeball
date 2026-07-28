@@ -5,7 +5,7 @@
 let health;
 
 function preload() {
-  health = loadImage("health.jpg");
+  health = loadImage("images/health.jpg");
 }
 
 // =====================================
@@ -123,20 +123,24 @@ function setup() {
 }
 
 function startScreen() {
+  const centerX = 270;
+  const sliderWidth = 200;
+  const buttonWidth = 150;
+
   ballSlider = createSlider(1, 6, 2, 1);
   ballSlider.parent('canvas-holder');
-  ballSlider.position(150, 220);
-  ballSlider.size(200);
+  ballSlider.position(centerX - sliderWidth / 2, 250);
+  ballSlider.size(sliderWidth);
 
   speedSlider = createSlider(0.1, 5.0, 2.5, 0.1);
   speedSlider.parent('canvas-holder');
-  speedSlider.position(150, 310);
-  speedSlider.size(200);
+  speedSlider.position(centerX - sliderWidth / 2, 320);
+  speedSlider.size(sliderWidth);
 
   startButton = createButton('go dodge stuf');
   startButton.parent('canvas-holder');
-  startButton.position(175, 380);
-  startButton.size(150, 40);
+  startButton.position(centerX - buttonWidth / 2, 390);
+  startButton.size(buttonWidth, 40);
   startButton.style('cursor', 'pointer');
   startButton.mousePressed(startGame);
 }
@@ -183,11 +187,10 @@ function draw() {
 
    
     fill(255);
-    textSize(18);
-    textAlign(LEFT);
-    text("ball amount: " + ballSlider.value(), 150, 210);
-
-    text("ball fastness: " + speedSlider.value().toFixed(1) + "x", 150, 300);
+    textSize(16);
+    textAlign(CENTER);
+    text("ball amount: " + ballSlider.value(), 250, 225);
+    text("ball speed: " + speedSlider.value().toFixed(1) + "x", 250, 295);
 
   } else if (state === "game") {
     background(0, 0, 0, 75);
