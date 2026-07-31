@@ -346,6 +346,10 @@ function draw() {
 // =====================================
 
 function keyPressed() {
+  if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(key)) {
+    return false;
+  }
+
   // -----------------------------
   // Pause / Unpause
   // -----------------------------
