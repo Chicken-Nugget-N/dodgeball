@@ -11,13 +11,14 @@ body {
     margin: 15px;
     color: #E0FFFF;
     background-color: #9A031E;
+    border-radius: 15px;
     align-items: center;
     padding: 10px;
     font-family: OCR A Std, monospace;
     font-size: 33px;
     padding-left: 7%;
     border: rgb(85, 0, 28) solid 5px; 
-    border-radius: 15px;
+    height: 75px;
 }
 
 .header a {
@@ -36,7 +37,30 @@ body {
     gap: 30px;
     font-family: American Typewriter, sans-serif;
     font-size: 17px;  
+    text-align: center;
+    align-items: center;
 
+}
+
+.header a, .header img {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, text-shadow 0.2s ease, drop-shadow 0.2s ease;
+}
+
+.header a {
+    display: inline-block;
+}
+
+.header a:not(:has(img)):hover, .header a:not(:has(img)):hover::after {
+    display: inline;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    transform: translateY(-3px);
+    text-transform: uppercase;
+    content: "!!!";
+}
+
+.header img:hover{
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+    transform: translateY(-3px);
 }
 
 .page-layout {
